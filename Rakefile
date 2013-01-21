@@ -11,22 +11,31 @@ rescue Bundler::BundlerError => e
 end
 require 'rake'
 
+
+
 require 'jeweler'
-Jeweler::Tasks.new do |gem|
-  $LOAD_PATH.unshift 'lib'
-  require "passifier"
-  # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.version = Passifier::VERSION
-  gem.name = "passifier"
-  gem.homepage = "http://github.com/paperlesspost/passifier"
-  gem.license = "MIT"
-  gem.summary = %Q{Generate Apple Passbook passes in Ruby}
-  gem.description = %Q{Generate Apple Passbook passes in Ruby}
-  gem.email = "ari.russo@gmail.com"
-  gem.authors = ["Ari Russo"]
-  # dependencies defined in Gemfile
+begin
+  Jeweler::Tasks.new do |gem|
+    $LOAD_PATH.unshift 'lib'
+    require "passifier"
+    # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
+    gem.version = Passifier::VERSION
+    gem.name = "passifier"
+    gem.homepage = "http://github.com/paperlesspost/passifier"
+    gem.license = "MIT"
+    gem.summary = %Q{Generate Apple Passbook passes in Ruby}
+    gem.description = %Q{Generate Apple Passbook passes in Ruby}
+    gem.email = "ari.russo@gmail.com"
+    gem.authors = ["Ari Russo"]
+    # dependencies defined in Gemfile
+  end
+
+  Jeweler::RubygemsDotOrgTasks.new
+  Jeweler::GemcutterTasks.new
+rescue LoadError
+  puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
 end
-Jeweler::RubygemsDotOrgTasks.new
+
 
 require 'rake/testtask'
 Rake::TestTask.new(:test) do |test|
